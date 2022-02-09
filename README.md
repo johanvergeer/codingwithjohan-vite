@@ -39,8 +39,6 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br>
 
 - 😃 [Use icons from any icon sets, with no compromise](https://github.com/antfu/unplugin-icons)
 
-- 🌍 [I18n ready](./locales)
-
 - 🗒 [Markdown Support](https://github.com/antfu/vite-plugin-md)
 
 - 🔥 Use the [new `<script setup>` syntax](https://github.com/vuejs/rfcs/pull/227)

@@ -4,7 +4,7 @@ title: About
 
 <div class="text-center">
   <!-- You can use Vue components inside markdown -->
-  <carbon-dicom-overlay class="text-4xl -mb-6 m-auto" />
+  <carbon-dicom-overlay class="text-4xl -mb-6 m-auto"></carbon-dicom-overlay>
   <h3>About</h3>
 </div>
 
@@ -13,7 +13,7 @@ title: About
 ```js
 // syntax highlighting example
 function vitesse() {
-  const foo = 'bar'
+  const foo = "bar"
   console.log(foo)
 }
 ```

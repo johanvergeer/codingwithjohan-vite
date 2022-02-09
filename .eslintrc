@@ -1,3 +1,7 @@
 {
-  "extends": "@antfu"
+  "extends": ["@antfu", "prettier"],
+  "rules": {
+    "quotes": ["error", "double"],
+    "object-shorthand": "off"
+  }
 }
