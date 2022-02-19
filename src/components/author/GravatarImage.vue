@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import md5 from "md5"
 import type { Author } from "~/types"
+import { createGravatarImgUrl } from "~/utils/gravatar"
 
 const props = defineProps({
   author: {
@@ -17,8 +17,6 @@ const props = defineProps({
   },
 })
 
-const gravatarImgUrl = (): string => {
-  const hash = md5(props.author.email.trim().toLowerCase())
-  return `https://www.gravatar.com/avatar/${hash}?default=mp&size=${props.size}`
-}
+const gravatarImgUrl = (): string =>
+  createGravatarImgUrl(props.author.email, props.size)
 </script>
