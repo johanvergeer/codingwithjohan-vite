@@ -159,7 +159,3 @@ or when the property might return a different value under certain circumstances.
 `@cached_propety` provides a huge performance boost when you are dealing with big calculations,
 retrieving data from a database or calling an external API. All you have to look out for are side effects and mutable state.
 
-<route lang="yaml">
-meta:
-  layout: home
-</route>

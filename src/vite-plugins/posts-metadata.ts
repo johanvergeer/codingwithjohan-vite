@@ -59,6 +59,8 @@ const parseDescription = (content: string): string => {
   return ""
 }
 
+const toSlug = (fileName: string): string => fileName.split(".")[0]
+
 const processPostsMetadata = (): Plugin => {
   let isProduction = false
 
@@ -109,7 +111,8 @@ const processPostsMetadata = (): Plugin => {
             featureImage: metadataJson.featureImage || "",
             author: parseAuthor(metadataJson.author),
             fileName: fileName,
-            slug: `/blog/${fileName.split(".")[0]}`,
+            slug: toSlug(fileName),
+            url: `/blog/${toSlug(fileName)}`,
             description: parseDescription(content),
           }
         })

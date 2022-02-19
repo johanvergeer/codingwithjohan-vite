@@ -22,7 +22,11 @@ const go = () => {
 <template>
   <div>
     <ul>
-      <li v-for="post in allPosts" :key="post.slug">{{ post.title }}</li>
+      <li v-for="post in allPosts" :key="post.slug">
+        <router-link :to="{ path: `${post.url}` }">{{
+          post.title
+        }}</router-link>
+      </li>
     </ul>
     <p class="text-4xl">
       <carbon-campsite class="inline-block" />

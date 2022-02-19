@@ -31,6 +31,21 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ["vue", "md"],
+      extendRoute(route) {
+        if (route.path.startsWith("/blog/")) {
+          // Index is unauthenticated.
+          return {
+            ...route,
+            meta: { layout: "post" },
+          }
+        }
+
+        // Augment the route with meta that indicates that the route requires authentication.
+        return {
+          ...route,
+          meta: { auth: true },
+        }
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -38,13 +53,7 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: [
-        "vue",
-        "vue-router",
-        "@vueuse/head",
-        "@vueuse/core",
-        "vitest",
-      ],
+      imports: ["vue", "vue-router", "@vueuse/head", "@vueuse/core", "vitest"],
       dts: "src/auto-imports.d.ts",
     }),
 

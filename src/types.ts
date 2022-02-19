@@ -32,6 +32,7 @@ export interface PostMetaDataFinal extends PostMetaData {
   updatedAt: Date
   fileName: string
   slug: string
+  url: string
   description: string
   sources: PostSource[]
 }
