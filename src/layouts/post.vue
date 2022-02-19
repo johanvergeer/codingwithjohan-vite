@@ -1,15 +1,23 @@
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <div v-if="isLoading">Loading ...</div>
-    <div v-else>
-      <h1>{{ postMeta.title }}</h1>
-      <router-view />
-      <Footer />
-      <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-        [Post Layout]
+  <div
+    class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen"
+  >
+    <div class="flex-grow">
+      <site-header />
+      <div v-if="isLoading">Loading ...</div>
+      <div v-else>
+        <h1>{{ postMeta.title }}</h1>
+        <main>
+          <router-view />
+        </main>
+        <Footer />
+        <div class="mt-5 mx-auto text-center opacity-25 text-sm">
+          [Post Layout]
+        </div>
       </div>
+      <site-footer />
     </div>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">

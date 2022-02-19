@@ -4,6 +4,7 @@ specifiers:
   '@antfu/eslint-config': ^0.16.0
   '@iconify-json/akar-icons': ^1.0.8
   '@iconify-json/carbon': ^1.0.14
+  '@iconify-json/ic': ^1.1.0
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/nprogress': ^0.2.0
@@ -57,6 +58,7 @@ devDependencies:
   '@antfu/eslint-config': 0.16.0_eslint@8.7.0+typescript@4.5.5
   '@iconify-json/akar-icons': 1.0.8
   '@iconify-json/carbon': 1.0.14
+  '@iconify-json/ic': 1.1.0
   '@types/js-yaml': 4.0.5
   '@types/markdown-it-link-attributes': 3.0.1
   '@types/nprogress': 0.2.0
@@ -1421,6 +1423,12 @@ packages:
 
   /@iconify-json/carbon/1.0.14:
     resolution: {integrity: sha512-nPJtOG2wmGwSek4wFoQWOecQKhIuav2qBFXqDWQl+vfqwqwCEYloUrFzedqhwhFv1AO/P81CY+F919YuYWgCXA==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
+  /@iconify-json/ic/1.1.0:
+    resolution: {integrity: sha512-nbjtdGuyMqD8U8T3sNijSAhyhGwtpt6T/22GsGlt2HMtR4E7QMeHHJ4ox/QI2CI1MrBpFEXsuUUwnbmL7Xn6LQ==}
     dependencies:
       '@iconify/types': 1.0.12
     dev: true

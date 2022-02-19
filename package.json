@@ -25,6 +25,7 @@
     "@antfu/eslint-config": "^0.16.0",
     "@iconify-json/akar-icons": "^1.0.8",
     "@iconify-json/carbon": "^1.0.14",
+    "@iconify-json/ic": "^1.1.0",
     "@types/js-yaml": "^4.0.5",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
