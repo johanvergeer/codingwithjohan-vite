@@ -7,6 +7,7 @@ export const usePostsIndexStore = defineStore("postsIndex", {
     async allPosts(): Promise<Ref<PostMetaDataFinal[]>> {
       const { data } = await useFetch("/blogIndex.json").json()
 
+      // TODO return the correct types for the blog meta attributes
       return data
     },
 

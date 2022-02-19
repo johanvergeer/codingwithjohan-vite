@@ -35,4 +35,5 @@ export interface PostMetaDataFinal extends PostMetaData {
   url: string
   description: string
   sources: PostSource[]
+  readingTime: number
 }

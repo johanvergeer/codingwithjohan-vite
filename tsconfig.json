@@ -18,7 +18,8 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      "@types/js-yaml"
+      "@types/js-yaml",
+      "@types/md5"
     ],
     "paths": {
       "~/*": ["src/*"]

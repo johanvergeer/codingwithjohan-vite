@@ -61,6 +61,14 @@ const parseDescription = (content: string): string => {
 
 const toSlug = (fileName: string): string => fileName.split(".")[0]
 
+export function calculateReadingTime(content: string) {
+  // const contentString = JSON.stringify(document.body)
+  const words = content.split(" ").length
+  const wordsPerMinute = 200
+
+  return Math.ceil(words / wordsPerMinute)
+}
+
 const processPostsMetadata = (): Plugin => {
   let isProduction = false
 
@@ -114,6 +122,7 @@ const processPostsMetadata = (): Plugin => {
             slug: toSlug(fileName),
             url: `/blog/${toSlug(fileName)}`,
             description: parseDescription(content),
+            readingTime: calculateReadingTime(content)
           }
         })
 

@@ -7,6 +7,7 @@ specifiers:
   '@iconify-json/ic': ^1.1.0
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it-link-attributes': ^3.0.1
+  '@types/md5': ^2.3.2
   '@types/nprogress': ^0.2.0
   '@vitejs/plugin-vue': ^2.1.0
   '@vue/test-utils': ^2.0.0-rc.18
@@ -21,6 +22,7 @@ specifiers:
   js-yaml: ^4.1.0
   markdown-it-link-attributes: ^4.0.0
   markdown-it-prism: ^2.2.2
+  md5: ^2.3.0
   nprogress: ^0.2.0
   pinia: ^2.0.9
   pnpm: ^6.28.0
@@ -47,6 +49,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 7.5.4_vue@3.2.29
   '@vueuse/head': 0.7.5_vue@3.2.29
+  md5: 2.3.0
   nprogress: 0.2.0
   pinia: 2.0.9_typescript@4.5.5+vue@3.2.29
   prism-theme-vars: 0.2.2
@@ -61,6 +64,7 @@ devDependencies:
   '@iconify-json/ic': 1.1.0
   '@types/js-yaml': 4.0.5
   '@types/markdown-it-link-attributes': 3.0.1
+  '@types/md5': 2.3.2
   '@types/nprogress': 0.2.0
   '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
   '@vue/test-utils': 2.0.0-rc.18_vue@3.2.29
@@ -1594,6 +1598,10 @@ packages:
       '@types/mdurl': 1.0.2
     dev: true
 
+  /@types/md5/2.3.2:
+    resolution: {integrity: sha512-v+JFDu96+UYJ3/UWzB0mEglIS//MZXgRaJ4ubUPwOM0gvLc/kcQ3TWNYwENEK7/EcXGQVrW8h/XqednSjBd/Og==}
+    dev: true
+
   /@types/mdurl/1.0.2:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: true
@@ -2449,6 +2457,10 @@ packages:
       is-regex: 1.1.4
     dev: true
 
+  /charenc/0.0.2:
+    resolution: {integrity: sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=}
+    dev: false
+
   /check-error/1.0.2:
     resolution: {integrity: sha1-V00xLt2Iu13YkS6Sht1sCu1KrII=}
     dev: true
@@ -2681,6 +2693,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /crypt/0.0.2:
+    resolution: {integrity: sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=}
+    dev: false
 
   /crypto-random-string/2.0.0:
     resolution: {integrity: sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==}
@@ -4317,6 +4333,10 @@ packages:
       has-tostringtag: 1.0.0
     dev: true
 
+  /is-buffer/1.1.6:
+    resolution: {integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==}
+    dev: false
+
   /is-builtin-module/3.1.0:
     resolution: {integrity: sha512-OV7JjAgOTfAFJmHZLvpSTb4qi0nIILDV1gWPYDnDJUTNFM5aGlRAhk4QcT8i7TuAleeEV5Fdkqn3t4mS+Q11fg==}
     engines: {node: '>=6'}
@@ -4895,6 +4915,14 @@ packages:
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: true
+
+  /md5/2.3.0:
+    resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
+    dev: false
 
   /mdurl/1.0.1:
     resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}

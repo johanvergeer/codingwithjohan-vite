@@ -4,6 +4,7 @@
 
 declare module "vue" {
   export interface GlobalComponents {
+    ArticleMeta: typeof import("./components/blog/ArticleMeta.vue")["default"]
     BaseAlert: typeof import("./components/BaseAlert.vue")["default"]
     CarbonCampsite: typeof import("~icons/carbon/campsite")["default"]
     CarbonDicomOverlay: typeof import("~icons/carbon/dicom-overlay")["default"]
@@ -18,6 +19,7 @@ declare module "vue" {
     Counter: typeof import("./components/Counter.vue")["default"]
     Footer: typeof import("./components/Footer.vue")["default"]
     FooterIcon: typeof import("./components/footer/FooterIcon.vue")["default"]
+    GravatarImage: typeof import("./components/author/GravatarImage.vue")["default"]
     ProConList: typeof import("./components/ProConList.vue")["default"]
     README: typeof import("./components/README.md")["default"]
     SiteFooter: typeof import("./components/footer/SiteFooter.vue")["default"]
