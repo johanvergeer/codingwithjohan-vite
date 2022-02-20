@@ -45,22 +45,3 @@ onMounted(async () => {
   isLoading.value = false
 })
 </script>
-
-<style>
-.container-inner {
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  @media (min-width: 640px) {
-    max-width: 640px;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 768px;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 800px;
-  }
-}
-</style>

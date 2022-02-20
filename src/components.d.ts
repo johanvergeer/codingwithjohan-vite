@@ -7,6 +7,7 @@ declare module "vue" {
     AkarIconsCircleMinusFill: typeof import("~icons/akar-icons/circle-minus-fill")["default"]
     AkarIconsCirclePlusFill: typeof import("~icons/akar-icons/circle-plus-fill")["default"]
     ArticleMeta: typeof import("./components/blog/ArticleMeta.vue")["default"]
+    ArticlesList: typeof import("./components/blog/ArticlesList.vue")["default"]
     BaseAlert: typeof import("./components/BaseAlert.vue")["default"]
     CarbonEmail: typeof import("~icons/carbon/email")["default"]
     CarbonInformationFilled: typeof import("~icons/carbon/information-filled")["default"]
