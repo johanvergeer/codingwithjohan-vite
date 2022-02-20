@@ -1,42 +1,32 @@
 <template>
-  <div
-    class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen"
-  >
-    <div class="flex-grow">
-      <site-header />
-      <div v-if="isLoading">Loading ...</div>
-      <div v-else>
-        <div class="container-inner mx-auto my-16">
-          <div>
-            <h1 class="text-3xl font-bold leading-tight">
-              {{ postMeta.title }}
-            </h1>
-            <div class="flex justify-between mt-5">
-              <article-meta :post="postMeta" />
-              <div class="flex mb-8 text-xl">
-                <!--                <article-tags :article="article" />-->
-              </div>
-            </div>
-            <!--            <feature-image :article="article" class="mb-4" />-->
-            <!--            <article-series :document="article" />-->
-            <div class="markdown-body mb-8">
-              <main>
-                <router-view />
-              </main>
-              <!--              <nuxt-content :document="article" />-->
-            </div>
-            <!--            <article-series-prev-next :document="article" />-->
-            <!--            <article-sources :article="article" />-->
+  <site-header />
+  <div v-if="isLoading">Loading ...</div>
+  <div v-else>
+    <div class="container-inner mx-auto my-16">
+      <div>
+        <h1 class="text-3xl font-bold leading-tight">
+          {{ postMeta.title }}
+        </h1>
+        <div class="flex justify-between mt-5">
+          <article-meta :post="postMeta" />
+          <div class="flex mb-8 text-xl">
+            <!--                <article-tags :article="article" />-->
           </div>
         </div>
-        <Footer />
-        <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-          [Post Layout]
+        <!--            <feature-image :article="article" class="mb-4" />-->
+        <!--            <article-series :document="article" />-->
+        <div class="markdown-body mb-8">
+          <main>
+            <router-view />
+          </main>
+          <!--              <nuxt-content :document="article" />-->
         </div>
+        <!--            <article-series-prev-next :document="article" />-->
+        <!--            <article-sources :article="article" />-->
       </div>
-      <site-footer />
     </div>
   </div>
+  <site-footer />
 </template>
 
 <script setup lang="ts">
