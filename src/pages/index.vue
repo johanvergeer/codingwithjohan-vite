@@ -9,7 +9,7 @@ const name = ref(user.savedName)
 const allPosts = ref<PostMetaDataFinal[]>([])
 
 postsStore.allPosts.then((posts) => {
-  allPosts.value = posts.value
+  allPosts.value = posts
 })
 </script>
 

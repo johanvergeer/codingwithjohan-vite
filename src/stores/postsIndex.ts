@@ -1,21 +1,34 @@
 import { defineStore } from "pinia"
-import type { Ref } from "@vue/reactivity"
 import type { PostMetaDataFinal } from "~/types"
 
 export const usePostsIndexStore = defineStore("postsIndex", {
+  state: () => {
+    return {
+      _allPostsMeta: [] as PostMetaDataFinal[],
+    }
+  },
   getters: {
-    async allPosts(): Promise<Ref<PostMetaDataFinal[]>> {
-      const { data } = await useFetch("/blogIndex.json").json()
+    async allPosts(): Promise<PostMetaDataFinal[]> {
+      if (this._allPostsMeta.length > 0) {
+        // No need to load the posts when they are already loaded
+        return this._allPostsMeta
+      }
+      this._allPostsMeta = await getAllPosts()
 
-      // TODO return the correct types for the blog meta attributes
-      return data
+      return this._allPostsMeta
     },
 
     getPost() {
       return async (slug: string): Promise<PostMetaDataFinal | undefined> =>
         await this.allPosts.then((posts) =>
-          posts.value.find((p: PostMetaDataFinal) => p.slug === slug)
+          posts.find((p: PostMetaDataFinal) => p.slug === slug)
         )
     },
   },
 })
+
+async function getAllPosts(): Promise<PostMetaDataFinal[]> {
+  const { data } = await useFetch("/blogIndex.json").json()
+
+  return data.value
+}
