@@ -5,7 +5,7 @@
     <div class="container-inner mx-auto my-16">
       <div>
         <h1 class="text-3xl font-bold leading-tight">
-          {{ postMeta.title }}
+          {{ postMeta.title }} {{ baseUrl }}
         </h1>
         <div class="flex justify-between mt-5">
           <article-meta :post="postMeta" />
@@ -43,9 +43,7 @@ const postMeta = ref<PostMetaDataFinal>()
 
 const head = ref({})
 
-const baseUrl = useBaseUrl()
-
-console.log("BASE URL ==> ", baseUrl)
+const baseUrl = ref(useBaseUrl())
 
 useHead(head)
 
