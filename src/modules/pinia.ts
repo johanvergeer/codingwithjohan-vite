@@ -11,8 +11,8 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
   const environmentInfo = useEnvironmentInfo()
   environmentInfo.isProd = import.meta.env.PROD
   environmentInfo.baseUrl = import.meta.env.PROD
-    // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
-    ? process.env.URL || ""
+    ? // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
+      process.env.URL || ""
     : "http://localhost:3333"
 
   // Refer to
@@ -22,6 +22,8 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
     if (import.meta.env.PROD && !initialState.pinia) {
       throw new Error("The initial state for Pinia should be set!")
     }
+
+    throw new Error("THIS IS NOT AN ERROR")
 
     pinia.state.value = initialState.pinia || {}
   } else {
