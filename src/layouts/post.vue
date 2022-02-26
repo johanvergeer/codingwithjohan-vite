@@ -40,8 +40,136 @@ const isLoading = ref(true)
 const postsStore = usePostsIndexStore()
 const postMeta = ref<PostMetaDataFinal>()
 
-onMounted(async () => {
-  postMeta.value = await postsStore.getPost(slug)
-  isLoading.value = false
-})
+const head = ref({})
+
+useHead(head)
+
+postsStore
+  .getPost(slug)
+  .then((post) => {
+    postMeta.value = post
+    head.value = configureHead(postMeta.value!)
+    isLoading.value = false
+  })
+  .catch((e) => console.error(e))
+
+function configureHead(postMeta: PostMetaDataFinal) {
+  return {
+    meta: [
+      {
+        name: "author",
+        content: postMeta.author.name,
+      },
+      {
+        name: "description",
+        content: postMeta.description,
+      },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: postMeta.title },
+      {
+        property: "og:description",
+        content: postMeta.description,
+      },
+      // {
+      //   property: "og:url",
+      //   content: urljoin(this.$store.state.host, this.article.path),
+      // },
+      ..._timesMeta(),
+      ..._twitterMeta(),
+      ..._tagsMeta(),
+    ],
+  }
+
+  function _timesMeta() {
+    return [
+      {
+        name: "article:published_time",
+        content: computed(() => postMeta.createdAt),
+      },
+      {
+        name: "article:modified_time",
+        content: computed(() => {
+          if (postMeta.createdAt > postMeta.updatedAt) {
+            return postMeta.createdAt
+          }
+          return postMeta.updatedAt
+        }),
+      },
+    ]
+  }
+
+  function _twitterMeta() {
+    return [
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:site",
+        content: "@johan_vergeer",
+      },
+      {
+        name: "twitter:creator",
+        content: "@johan_vergeer",
+      },
+      {
+        name: "twitter:label1",
+        content: "Reading time",
+      },
+      {
+        name: "twitter:data1",
+        content: `${postMeta.readingTime} min read`,
+      },
+      {
+        name: "twitter:title",
+        content: postMeta.title,
+      },
+      {
+        name: "twitter:description",
+        content: postMeta.description,
+      },
+    ]
+  }
+
+  function _tagsMeta() {
+    return postMeta.tags
+      ? postMeta.tags.map((tag) => ({
+          name: "article:tag",
+          content: tag,
+          id: tag.toLowerCase(),
+        }))
+      : []
+  }
+
+  function _imageMeta() {
+    if (postMeta.featureImage) {
+      return [
+        // {
+        //   name: "og:image",
+        //   content: this._featureImageUrl,
+        // },
+        // {
+        //   name: "og:image:secure_url",
+        //   content: this._featureImageUrl,
+        // },
+        {
+          name: "og:image:type",
+          content: "image/png",
+        },
+        {
+          name: "og:image:alt",
+          content: postMeta.title,
+        },
+        // {
+        //   name: "twitter:image",
+        //   content: this._featureImageUrl,
+        // },
+        // {
+        //   name: "twitter:image:alt",
+        //   content: this.article.title,
+        // },
+      ]
+    } else return []
+  }
+}
 </script>

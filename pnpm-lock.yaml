@@ -4,7 +4,11 @@ specifiers:
   '@antfu/eslint-config': ^0.16.0
   '@iconify-json/akar-icons': ^1.0.8
   '@iconify-json/carbon': ^1.0.14
+  '@iconify-json/fluent': ^1.1.1
   '@iconify-json/ic': ^1.1.0
+  '@iconify-json/la': ^1.1.0
+  '@iconify-json/ph': ^1.1.0
+  '@iconify-json/tabler': ^1.1.1
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/md5': ^2.3.2
@@ -61,7 +65,11 @@ devDependencies:
   '@antfu/eslint-config': 0.16.0_eslint@8.7.0+typescript@4.5.5
   '@iconify-json/akar-icons': 1.0.8
   '@iconify-json/carbon': 1.0.14
+  '@iconify-json/fluent': 1.1.1
   '@iconify-json/ic': 1.1.0
+  '@iconify-json/la': 1.1.0
+  '@iconify-json/ph': 1.1.0
+  '@iconify-json/tabler': 1.1.1
   '@types/js-yaml': 4.0.5
   '@types/markdown-it-link-attributes': 3.0.1
   '@types/md5': 2.3.2
@@ -1431,8 +1439,32 @@ packages:
       '@iconify/types': 1.0.12
     dev: true
 
+  /@iconify-json/fluent/1.1.1:
+    resolution: {integrity: sha512-wZKn5R8wgaprqN9O9weIJvAc9p20JHBh8ebGytGDZ0m4dqrL3zxOrLO+Cfk8tIiWGUrM/DHRYmZG5NBXeYTwFA==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
   /@iconify-json/ic/1.1.0:
     resolution: {integrity: sha512-nbjtdGuyMqD8U8T3sNijSAhyhGwtpt6T/22GsGlt2HMtR4E7QMeHHJ4ox/QI2CI1MrBpFEXsuUUwnbmL7Xn6LQ==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
+  /@iconify-json/la/1.1.0:
+    resolution: {integrity: sha512-TE8p3z+2u8pAsC+ptkO3WK9KfjhiT6w5VLq+9segdqm57mVN4XYKW+TjKtguGvVezayzTJLT0vxMvD0pfUQdOA==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
+  /@iconify-json/ph/1.1.0:
+    resolution: {integrity: sha512-SRNZ3q5GOpBtJDsn6U/QtYTlghp94oxvKKZUf0mhoYZKE/FyKTtp61Ghg7AQyivsppq8OV8seutFrJZ3548qUA==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: true
+
+  /@iconify-json/tabler/1.1.1:
+    resolution: {integrity: sha512-+AGOe1v/TzxZxsa0MXLT6wRWTSgS4PB64PGnx9D5k39zrYV5JTU5loTWrNmvDNPJ//WVpdWz8xfacIJCCLVpsw==}
     dependencies:
       '@iconify/types': 1.0.12
     dev: true
