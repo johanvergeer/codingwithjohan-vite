@@ -11,7 +11,8 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
   const environmentInfo = useEnvironmentInfo()
   environmentInfo.isProd = import.meta.env.PROD
   environmentInfo.baseUrl = import.meta.env.PROD
-    ? process.env.DEPLOY_PRIME_URL || ""
+    // https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata
+    ? process.env.URL || ""
     : "http://localhost:3333"
 
   // Refer to
