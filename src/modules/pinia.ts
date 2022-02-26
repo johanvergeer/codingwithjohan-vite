@@ -23,8 +23,6 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
       throw new Error("The initial state for Pinia should be set!")
     }
 
-    throw new Error(JSON.stringify(initialState.pinia))
-
     pinia.state.value = initialState.pinia || {}
   } else {
     initialState.pinia = pinia.state.value
