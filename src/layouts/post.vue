@@ -30,20 +30,23 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia"
 import { usePostsIndexStore } from "~/stores/postsIndex"
 import type { PostMetaDataFinal } from "~/types"
-import { useBaseUrl } from "~/composables"
+import { useEnvironmentInfo } from "~/stores/environmentInfo"
 
 const slug = useRoute().path.split("/").slice(-1)[0]
 
 const isLoading = ref(true)
 
 const postsStore = usePostsIndexStore()
+const environmentInfoStore = useEnvironmentInfo()
+
+const { baseUrl } = storeToRefs(environmentInfoStore)
+
 const postMeta = ref<PostMetaDataFinal>()
 
 const head = ref({})
-
-const baseUrl = ref(useBaseUrl())
 
 useHead(head)
 
@@ -51,12 +54,12 @@ postsStore
   .getPost(slug)
   .then((post) => {
     postMeta.value = post
-    head.value = configureHead(postMeta.value!)
+    head.value = configureHead(postMeta.value!, baseUrl.value)
     isLoading.value = false
   })
   .catch((e) => console.error(e))
 
-function configureHead(postMeta: PostMetaDataFinal) {
+function configureHead(postMeta: PostMetaDataFinal, baseUrl: string) {
   return {
     meta: [
       {
@@ -73,10 +76,10 @@ function configureHead(postMeta: PostMetaDataFinal) {
         property: "og:description",
         content: postMeta.description,
       },
-      // {
-      //   property: "og:url",
-      //   content: urljoin(this.$store.state.host, this.article.path),
-      // },
+      {
+        property: "og:url",
+        content: new URL(postMeta.url, baseUrl),
+      },
       ..._timesMeta(),
       ..._twitterMeta(),
       ..._tagsMeta(),
