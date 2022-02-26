@@ -54,7 +54,7 @@ const parseDescription = (content: string): string => {
 
   if (content.includes(separator)) {
     // TODO: markdown to html
-    return content.split(separator)[0]
+    return content.split(separator)[0].trim()
   }
   return ""
 }
