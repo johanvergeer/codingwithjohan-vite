@@ -78,7 +78,7 @@ function configureHead(postMeta: PostMetaDataFinal, baseUrl: string) {
       },
       {
         property: "og:url",
-        content: new URL(postMeta.url, baseUrl),
+        content: `-${baseUrl}-${postMeta.url}`,
       },
       ..._timesMeta(),
       ..._twitterMeta(),
