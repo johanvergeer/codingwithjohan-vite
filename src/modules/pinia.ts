@@ -19,6 +19,10 @@ export const install: UserModule = ({ isClient, initialState, app }) => {
   // https://github.com/antfu/vite-ssg/blob/main/README.md#state-serialization
   // for other serialization strategies.
   if (isClient) {
+    if (import.meta.env.PROD && !initialState.pinia) {
+      throw new Error("The initial state for Pinia should be set!")
+    }
+
     pinia.state.value = initialState.pinia || {}
   } else {
     initialState.pinia = pinia.state.value
