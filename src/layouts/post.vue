@@ -5,7 +5,7 @@
     <div class="container-inner mx-auto my-16">
       <div>
         <h1 class="text-3xl font-bold leading-tight">
-          {{ postMeta.title }} {{ baseUrl }}
+          {{ postMeta.title }}
         </h1>
         <div class="flex justify-between mt-5">
           <article-meta :post="postMeta" />
