@@ -30,9 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia"
-import { usePostsIndexStore } from "~/stores/postsIndex"
+import type { ComputedRef } from "@vue/reactivity"
 import type { PostMetaDataFinal } from "~/types"
+import { usePostsIndexStore } from "~/stores/postsIndex"
 import { useEnvironmentInfo } from "~/stores/environmentInfo"
 
 const slug = useRoute().path.split("/").slice(-1)[0]
@@ -41,8 +41,6 @@ const isLoading = ref(true)
 
 const postsStore = usePostsIndexStore()
 const environmentInfoStore = useEnvironmentInfo()
-
-const { baseUrl } = storeToRefs(environmentInfoStore)
 
 const postMeta = ref<PostMetaDataFinal>()
 
@@ -53,13 +51,15 @@ useHead(head)
 postsStore
   .getPost(slug)
   .then((post) => {
+    const baseUrl = computed(() => environmentInfoStore.baseUrl)
+
     postMeta.value = post
-    head.value = configureHead(postMeta.value!, baseUrl.value)
+    head.value = configureHead(postMeta.value!, baseUrl)
     isLoading.value = false
   })
   .catch((e) => console.error(e))
 
-function configureHead(postMeta: PostMetaDataFinal, baseUrl: string) {
+function configureHead(postMeta: PostMetaDataFinal, baseUrl: ComputedRef) {
   return {
     meta: [
       {
@@ -78,7 +78,7 @@ function configureHead(postMeta: PostMetaDataFinal, baseUrl: string) {
       },
       {
         property: "og:url",
-        content: `-${baseUrl}-${postMeta.url}`,
+        content: `-${baseUrl.value}-${postMeta.url}`,
       },
       ..._timesMeta(),
       ..._twitterMeta(),
