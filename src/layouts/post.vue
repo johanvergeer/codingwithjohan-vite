@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { usePostsIndexStore } from "~/stores/postsIndex"
 import type { PostMetaDataFinal } from "~/types"
+import { useBaseUrl } from "~/composables"
 
 const slug = useRoute().path.split("/").slice(-1)[0]
 
@@ -41,6 +42,10 @@ const postsStore = usePostsIndexStore()
 const postMeta = ref<PostMetaDataFinal>()
 
 const head = ref({})
+
+const baseUrl = useBaseUrl()
+
+console.log("BASE URL ==> ", baseUrl)
 
 useHead(head)
 
