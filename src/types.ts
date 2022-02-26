@@ -10,6 +10,7 @@ export enum PostStatus {
 export interface Author {
   name: string
   email: string
+  twitter_handle: string
 }
 
 export interface PostSource {

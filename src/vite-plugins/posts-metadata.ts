@@ -19,35 +19,20 @@ interface PostMetaDataJson extends PostMetaData {
   updatedAt?: Date
 }
 
-const authorFactory = (name: string, email: string): Author => {
-  return { name, email }
+const authors: Record<string, Author> = {
+  johan_vergeer: {
+    name: "Johan Vergeer",
+    email: "johanvergeer@gmail.com",
+    twitter_handle: "@johan_vergeer",
+  },
 }
 
 /**
  *
  * @param author is information about the author, formatted as `[name] <[email]>`
  */
-const parseAuthor = (author?: string): Author => {
-  const defaultAuthor: Author = authorFactory(
-    "Johan Vergeer",
-    "johanvergeer@gmail.com"
-  )
-
-  if (!author) {
-    return defaultAuthor
-  }
-
-  // email part of the regex is from https://emailregex.com/
-  const authorRegex =
-    /([\w ]+)<((([^<>()\<[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})))>/
-
-  if (authorRegex.test(author)) {
-    const authorData = authorRegex.exec(author)
-    return authorFactory(authorData![1].trim(), authorData![2].trim())
-  }
-
-  return defaultAuthor
-}
+const parseAuthor = (author?: string): Author =>
+  author ? authors[author] || authors.johan_vergeer : authors.johan_vergeer
 
 const parseDescription = (content: string): string => {
   const separator = "<!--more-->"
@@ -105,7 +90,6 @@ const processPostsMetadata = (): Plugin => {
         )
         .map((meta): PostMetaDataFinal => {
           // TODO: add validations
-          // TODO: read description
           const { metadataJson, fileName, content } = meta
           return {
             title: metadataJson.title,
@@ -122,7 +106,7 @@ const processPostsMetadata = (): Plugin => {
             slug: toSlug(fileName),
             url: `/blog/${toSlug(fileName)}`,
             description: parseDescription(content),
-            readingTime: calculateReadingTime(content)
+            readingTime: calculateReadingTime(content),
           }
         })
 
