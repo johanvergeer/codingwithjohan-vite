@@ -1,7 +1,7 @@
+import { useEnvironmentInfo } from "~/stores/environmentInfo"
+
 export const useBaseUrl = (): string => {
-  if (import.meta.env.DEV) {
-    return "http://localhost:3333"
-  } else {
-    return process.env.DEPLOY_PRIME_URL || "http://localhost:3333"
-  }
+  const environmentInfo = useEnvironmentInfo()
+
+  return environmentInfo.baseUrl
 }
